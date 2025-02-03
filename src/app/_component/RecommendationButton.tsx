@@ -2,22 +2,20 @@
 
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
-export default function NextButton({
+export default function RecommendationButton({
   path,
-  disabled = false,
 }: Readonly<{
   path: string;
-  disabled?: boolean;
 }>) {
   const router = useRouter();
   return (
     <Button
       variant="outlined"
       onClick={() => router.push(path)}
-      disabled={!path || disabled}
+      disabled={!path}
       className="rounded-xl"
     >
-      다음
+      추천받기
     </Button>
   );
 }

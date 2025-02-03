@@ -6,13 +6,14 @@ import "./globals.css";
 const pretendard = localFont({
   src: "../static/fonts/PretendardVariable.woff2",
   display: "swap",
-  weight: "400 900",
+  weight: "45 920",
   variable: "--font-pretendard",
 });
 
-const jua = Jua({
+export const jua = Jua({
   subsets: ["latin"],
   weight: ["400"],
+  variable: "--font-jua",
 });
 
 export const metadata: Metadata = {
@@ -26,8 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${pretendard.variable}`}>
-      <body className={`${pretendard.className} ${jua.className}`}>
+    <html
+      lang="ko"
+      className={`${pretendard.variable} font-pretendard ${pretendard.className}`}
+    >
+      <body className={`${pretendard.className} font-pretendard`}>
         {children}
       </body>
     </html>

@@ -63,7 +63,7 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
             <p className="text-gray-800">
               더 정확한 업체추천 및 일정조율을 위해 몇가지 질문드리려 합니다.
               <br />
-              해당 내용을 빠짐 없이 입력해 주세요. [토탈인테리어]
+              해당 내용을 빠짐 없이 입력해 주세요. [공통질문]
             </p>
           </Callout>
 

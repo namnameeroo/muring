@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,8 +13,7 @@ export default {
       },
       fontFamily: {
         pretendard: ["var(--font-pretendard)"],
-        pretendardVariable: ["PretendardVariable"], // 모르겠네
-
+        // pretendard: ["Pretendard"],
         jua: ["Jua"],
       },
     },

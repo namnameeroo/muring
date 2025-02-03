@@ -1,28 +1,47 @@
+@tailwind utilities;
 @import "tailwindcss";
 @import "tailwindcss/preflight";
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
   }
-}
 
-@font-face {
-  font-family: "PretendardVariable";
-  src: url("../static/fonts/PretendardVariable.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #0a0a0a;
+      --foreground: #ededed;
+    }
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: "PretendardVariable", Jua, Arial, Helvetica, sans-serif;
+  @font-face {
+    font-family: "PretendardVariable";
+    src: url("/src/static/fonts/PretendardVariable.woff2") format("woff2");
+    font-weight: 400 700 900;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Jua";
+    src: url("https://fonts.googleapis.com/css2?family=Jua&display=swap")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    max-width: 100vw;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: "PretendardVariable", Pretendard, Jua, Arial, Helvetica,
+      sans-serif;
+  }
 }

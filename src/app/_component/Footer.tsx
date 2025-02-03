@@ -6,7 +6,7 @@ export const Footer = () => {
       <div className="mx-auto max-w-6xl">
         <nav className="mb-4 flex gap-8">
           <a href="#" className="hover:text-gray-900">
-            복비킹 파트너스
+            무링 파트너스
           </a>
           <a href="#" className="hover:text-gray-900">
             이용약관
@@ -26,13 +26,13 @@ export const Footer = () => {
           </p>
 
           <p className="leading-relaxed">
-            복비킹은 통신판매중개자로서 건축 공사 및 중개/상담 서비스의 주 거래
-            당사자가 아니며, 전문가가 제공한 견적 및 시공/서비스에 대해 일체
-            책임을 지지 않습니다.
+            무링은 통신판매중개자로서 건축 공사 및 중개/상담 서비스의 주 거래
+            당사자가 아니며, 전문가가 제공한 견적 및 시공/서비스에 대해 일절
+            책임지지 않습니다.
           </p>
 
           <p className="mt-4 text-gray-500">
-            Copyright © 2024 복비킹 All rights reserved.
+            Copyright © 2025 무링 All rights reserved.
           </p>
         </div>
       </div>
