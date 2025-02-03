@@ -12,6 +12,12 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        pretendard: ["var(--font-pretendard)"],
+        pretendardVariable: ["PretendardVariable"], // 모르겠네
+
+        jua: ["Jua"],
+      },
     },
   },
   plugins: [],
