@@ -80,7 +80,7 @@ export default function Movelink7_Recommendation() {
   };
   return (
     <>
-      <div className="flex flex-col gap-2 bg-blue-50 p-4 shadow-sm">
+      <div className="flex flex-col gap-2 bg-blue-50 p-4 shadow-sm lg:px-80">
         <Callout className="p-5">
           <p className="text-gray-800">
             무링의 전문가 추천입니다. 해당 전문가 정보 확인 및 무링의 의견

@@ -8,7 +8,7 @@ export default function Movelink6() {
   return (
     <div className="flex flex-col bg-blue-50 p-4 shadow-sm">
       <AIManagerInterface>
-        <div className="relative -right-20 bottom-1 flex justify-end">
+        <div className="mt-8 flex justify-end">
           <RecommendationButton path="/movelink/request" />
         </div>
       </AIManagerInterface>
