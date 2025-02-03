@@ -1,8 +1,6 @@
 "use client";
 export * from "./MessageBox";
-export * from "./PageLayout";
 export * from "./ServiceGrid";
-import { useRouter } from "next/navigation";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -19,8 +17,6 @@ export function PageLayout({
   rightButton,
   className,
 }: PageLayoutProps) {
-  const router = useRouter();
-
   return (
     <div className={`min-h-screen bg-white ${className || ""}`}>
       {(title || backButton || rightButton) && (
