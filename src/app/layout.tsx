@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jua } from "next/font/google";
+// import { Jua } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -10,11 +10,11 @@ const pretendard = localFont({
   variable: "--font-pretendard",
 });
 
-export const jua = Jua({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-jua",
-});
+// const jua = Jua({
+//   subsets: ["latin"],
+//   weight: ["400"],
+//   variable: "--font-jua",
+// });
 
 export const metadata: Metadata = {
   title: "무링",
