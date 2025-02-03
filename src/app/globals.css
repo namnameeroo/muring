@@ -1,7 +1,7 @@
 @tailwind utilities;
 @import "tailwindcss";
 @import "tailwindcss/preflight";
-@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap"); */
 
 @layer base {
   :root {
@@ -20,14 +20,6 @@
     font-family: "PretendardVariable";
     src: url("/src/static/fonts/PretendardVariable.woff2") format("woff2");
     font-weight: 400 700 900;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "Jua";
-    src: url("https://fonts.googleapis.com/css2?family=Jua&display=swap")
-      format("woff2");
-    font-weight: 400;
     font-style: normal;
   }
 

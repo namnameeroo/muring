@@ -1,6 +1,6 @@
 import AIManager from "@/app/_component/AIManager";
 import Callout from "@/app/_component/Callout";
-import RecommendationButton from "@/app/_component/RecommendationButton";
+import NextButton from "@/app/_component/NextButton";
 
 import Image from "next/image";
 
@@ -9,7 +9,7 @@ export default function Movelink5() {
     <div className="flex flex-col bg-blue-50 p-4 shadow-sm">
       <AIManagerInterface>
         <div className="relative -right-20 bottom-1 flex justify-end">
-          <RecommendationButton path="/movelink/6" />
+          <NextButton path="/movelink/6" />
         </div>
       </AIManagerInterface>
     </div>
@@ -17,24 +17,21 @@ export default function Movelink5() {
 }
 
 const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
-  const cleaningOptions = [
-    { id: 1, name: "공실입니다", highlighted: true },
-    {
-      id: 2,
-      name: "모든 집이 있는 상태에서 청소를 해야합니다(거주청소)",
-      highlighted: false,
-    },
-    {
-      id: 3,
-      name: "오전에 전 세입자가 나간 후 청소를 하고, 오후에 이사짐이 들어옵니다",
-      highlighted: false,
-    },
-    { id: 4, name: "엘리베이터가 없습니다.", highlighted: false },
-    {
-      id: 5,
-      name: "가전제품(냉장고, 식기세척기, 오븐 등) 청소가 필요합니다",
-      highlighted: false,
-    },
+  const dateOptions = [
+    { id: 1, name: "날짜 선택하기", highlighted: false },
+    { id: 2, name: "협의가능(선택)", highlighted: true },
+  ];
+
+  const timeOptions = [
+    { id: 1, name: "오전 (07시~12시)", highlighted: false },
+    { id: 2, name: "오후 (13시~18시)", highlighted: false },
+    { id: 3, name: "모두가능 (07시~18시)", highlighted: true },
+  ];
+
+  const spaceOptions = [
+    { id: 1, name: "방", count: 3, highlighted: true },
+    { id: 2, name: "화장실", count: 1, highlighted: true },
+    { id: 3, name: "베란다", count: 1, highlighted: true },
   ];
 
   return (
@@ -62,14 +59,14 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
             </p>
           </Callout>
 
-          {/* Cleaning Status */}
+          {/* Date Selection */}
           <div className="mt-4">
-            <p className="my-3 font-bold">청소당일 시공환경은 어떤가요?</p>
-            <div className="grid grid-cols-1 gap-2">
-              {cleaningOptions.map((option) => (
+            <p className="mb-2">청소 예정일이 언제인가요?</p>
+            <div className="grid grid-cols-2 gap-2">
+              {dateOptions.map((option) => (
                 <button
                   key={option.id}
-                  className={`rounded-lg p-2 text-left ${
+                  className={`rounded-lg p-2 ${
                     option.highlighted
                       ? "bg-blue-500 text-white"
                       : "bg-white text-gray-800"
@@ -77,6 +74,48 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
                 >
                   {option.name}
                 </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Time Selection */}
+          <div className="mt-4">
+            <p className="mb-2">희망하는 청소시간은 언제인가요?</p>
+            <div className="grid grid-cols-3 gap-2">
+              {timeOptions.map((option) => (
+                <button
+                  key={option.id}
+                  className={`rounded-lg p-2 ${
+                    option.highlighted
+                      ? "bg-blue-500 text-white"
+                      : "bg-white text-gray-800"
+                  }`}
+                >
+                  {option.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Space Selection */}
+          <div className="mt-4">
+            <p className="mb-2">공간개수를 알려주세요.</p>
+            <div className="grid grid-cols-3 gap-2">
+              {spaceOptions.map((option) => (
+                <div
+                  key={option.id}
+                  className="flex items-center justify-between gap-2 rounded-lg bg-white p-2"
+                >
+                  <button className="rounded-full bg-blue-500 px-2 text-white">
+                    -
+                  </button>
+                  <span>
+                    {option.name} {option.count}
+                  </span>
+                  <button className="rounded-full bg-blue-500 px-2 text-white">
+                    +
+                  </button>
+                </div>
               ))}
             </div>
           </div>

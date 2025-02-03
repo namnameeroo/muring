@@ -1,28 +1,15 @@
-"use client";
-
 import AIManager from "@/app/_component/AIManager";
 import Callout from "@/app/_component/Callout";
-import NextButton from "@/app/_component/NextButton";
+import RecommendationButton from "@/app/_component/RecommendationButton";
 
-import LoadingSpinner from "@/app/_component/LoadingSpinner";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
-export default function Movelink6_Processing() {
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
-  useEffect(() => {
-    setIsButtonDisabled(true);
-    setTimeout(() => {
-      setIsButtonDisabled(false);
-    }, 1000);
-  }, []);
-
+export default function Movelink6() {
   return (
     <div className="flex flex-col bg-blue-50 p-4 shadow-sm">
       <AIManagerInterface>
         <div className="relative -right-20 bottom-1 flex justify-end">
-          <NextButton path="/movelink/7" disabled={isButtonDisabled} />
+          <RecommendationButton path="/movelink/request" />
         </div>
       </AIManagerInterface>
     </div>
@@ -30,6 +17,26 @@ export default function Movelink6_Processing() {
 }
 
 const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
+  const cleaningOptions = [
+    { id: 1, name: "공실입니다", highlighted: true },
+    {
+      id: 2,
+      name: "모든 집이 있는 상태에서 청소를 해야합니다(거주청소)",
+      highlighted: false,
+    },
+    {
+      id: 3,
+      name: "오전에 전 세입자가 나간 후 청소를 하고, 오후에 이사짐이 들어옵니다",
+      highlighted: false,
+    },
+    { id: 4, name: "엘리베이터가 없습니다.", highlighted: false },
+    {
+      id: 5,
+      name: "가전제품(냉장고, 식기세척기, 오븐 등) 청소가 필요합니다",
+      highlighted: false,
+    },
+  ];
+
   return (
     <div className="m-1 flex h-[80vh] w-[calc(100%-100px)] items-center justify-center">
       {/* Avatar */}
@@ -47,34 +54,32 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
         <div className="flex flex-1 flex-col gap-1 space-y-3">
           <AIManager />
 
-          <Callout className="p-7">
-            <div className="mb-2 flex justify-center">
-              <LoadingSpinner />
-            </div>
-            <p className="break-word text-gray-800">
-              잠시만 기다려주세요! 고객님이 입력해주신 소중한 정보를 바탕으로,
+          <Callout className="p-5">
+            <p className="text-gray-800">
+              더 정확한 업체추천 및 일정조율을 위해 몇가지 질문드리려 합니다.
               <br />
-              AI 매니저 무링이 최적의 전문가를 추천 중입니다.
-            </p>
-            <p className="break-word text-gray-800">
-              <br />
-              무링은 플랫폼 당사의 무분별한 매칭이 아닌,
-              <br />
-              고객님의 요청 조건에 가장 잘 맞는 서비스별 <br />
-              상위 3곳의 전문가를 AI가 신중히 선별합니다.
-              <br />
-              이는 고객님께 객관적이고 신뢰할 수 있는 선택을 드리기 위함입니다.
-            </p>
-            <p className="break-word text-gray-800">
-              <br />
-              추천된 전문가들은 고객님의 요청을 검토한 후,
-              <br />
-              직접 연락을 드림으로써 보다 자세한 상담을 제공할 예정입니다.
-              <br />
-              무링이 연결한 전문가와 함께, 모든 과정을 믿고 <br /> 진행하실 수
-              있도록 도와드리겠습니다.
+              해당 내용을 빠짐 없이 입력해 주세요. [청소]
             </p>
           </Callout>
+
+          {/* Cleaning Status */}
+          <div className="mt-4">
+            <p className="my-3 font-bold">청소당일 시공환경은 어떤가요?</p>
+            <div className="grid grid-cols-1 gap-2">
+              {cleaningOptions.map((option) => (
+                <button
+                  key={option.id}
+                  className={`rounded-lg p-2 text-left ${
+                    option.highlighted
+                      ? "bg-blue-500 text-white"
+                      : "bg-white text-gray-800"
+                  }`}
+                >
+                  {option.name}
+                </button>
+              ))}
+            </div>
+          </div>
 
           {children}
         </div>
