@@ -1,15 +1,17 @@
+"use client";
 import AIManager from "@/app/_component/AIManager";
 import Callout from "@/app/_component/Callout";
-import NextButton from "@/app/_component/NextButton";
+import NavigationButton from "@/app/_component/NavigationButton";
 
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Movelink3() {
   return (
     <div className="flex flex-col bg-blue-50 p-4 shadow-sm">
       <AIManagerInterface>
         <div className="relative -right-20 bottom-1 flex justify-end">
-          <NextButton path="/movelink/4" />
+          <NavigationButton path="/movelink/4" />
         </div>
       </AIManagerInterface>
     </div>
@@ -17,29 +19,33 @@ export default function Movelink3() {
 }
 
 const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
+  const [selectedSchedule, setSelectedSchedule] = useState<number | null>(null);
+  const [selectedBudget, setSelectedBudget] = useState<number | null>(null);
+  const [selectedContract, setSelectedContract] = useState<number | null>(null);
+
   const scheduleOptions = [
-    { id: 1, name: "1개월이내", highlighted: false },
-    { id: 2, name: "2개월이내", highlighted: false },
-    { id: 3, name: "3개월이내", highlighted: true },
-    { id: 4, name: "3개월이후", highlighted: false },
-    { id: 5, name: "상담 후 결정", highlighted: false },
+    { id: 1, name: "1개월이내" },
+    { id: 2, name: "2개월이내" },
+    { id: 3, name: "3개월이내" },
+    { id: 4, name: "3개월이후" },
+    { id: 5, name: "상담 후 결정" },
   ];
 
   const budgetOptions = [
-    { id: 1, name: "1천만원미만", highlighted: false },
-    { id: 2, name: "1천만원대", highlighted: false },
-    { id: 3, name: "2천만원대", highlighted: true },
-    { id: 4, name: "3천만원대", highlighted: false },
-    { id: 5, name: "4천만원대", highlighted: false },
-    { id: 6, name: "5천만원대", highlighted: false },
-    { id: 7, name: "5천만원 이상", highlighted: false },
-    { id: 8, name: "상담 후 결정", highlighted: false },
+    { id: 1, name: "1천만원미만" },
+    { id: 2, name: "1천만원대" },
+    { id: 3, name: "2천만원대" },
+    { id: 4, name: "3천만원대" },
+    { id: 5, name: "4천만원대" },
+    { id: 6, name: "5천만원대" },
+    { id: 7, name: "5천만원 이상" },
+    { id: 8, name: "상담 후 결정" },
   ];
 
   const contractOptions = [
-    { id: 1, name: "계약", highlighted: true },
-    { id: 2, name: "미계약", highlighted: false },
-    { id: 3, name: "기타", highlighted: false },
+    { id: 1, name: "계약" },
+    { id: 2, name: "미계약" },
+    { id: 3, name: "기타" },
   ];
 
   return (
@@ -74,8 +80,9 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
               {scheduleOptions.map((option) => (
                 <button
                   key={option.id}
+                  onClick={() => setSelectedSchedule(option.id)}
                   className={`rounded-lg p-2 ${
-                    option.highlighted
+                    selectedSchedule === option.id
                       ? "bg-blue-500 text-white"
                       : "bg-white text-gray-800"
                   }`}
@@ -93,8 +100,9 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
               {budgetOptions.map((option) => (
                 <button
                   key={option.id}
+                  onClick={() => setSelectedBudget(option.id)}
                   className={`rounded-lg p-2 ${
-                    option.highlighted
+                    selectedBudget === option.id
                       ? "bg-blue-500 text-white"
                       : "bg-white text-gray-800"
                   }`}
@@ -112,8 +120,9 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
               {contractOptions.map((option) => (
                 <button
                   key={option.id}
+                  onClick={() => setSelectedContract(option.id)}
                   className={`rounded-lg p-2 ${
-                    option.highlighted
+                    selectedContract === option.id
                       ? "bg-blue-500 text-white"
                       : "bg-white text-gray-800"
                   }`}

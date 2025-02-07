@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import { Jua } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import Script from "next/script";
 
 const pretendard = localFont({
   src: "../static/fonts/PretendardVariable.woff2",
@@ -33,6 +34,11 @@ export default function RootLayout({
     >
       <body className={`${pretendard.className} font-pretendard`}>
         {children}
+        <Script
+          id="daum-post"
+          src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+          type="text/javascript"
+        />
       </body>
     </html>
   );

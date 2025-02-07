@@ -1,6 +1,6 @@
 import AIManager from "@/app/_component/AIManager";
 import Callout from "@/app/_component/Callout";
-import NextButton from "@/app/_component/NextButton";
+import NavigationButton from "@/app/_component/NavigationButton";
 
 import Image from "next/image";
 
@@ -9,7 +9,7 @@ export default function Movelink4() {
     <div className="flex flex-col bg-blue-50 p-4 shadow-sm">
       <AIManagerInterface>
         <div className="relative -right-20 bottom-1 flex justify-end">
-          <NextButton path="/movelink/5" />
+          <NavigationButton path="/movelink/5" />
         </div>
       </AIManagerInterface>
     </div>

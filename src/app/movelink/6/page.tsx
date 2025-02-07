@@ -1,8 +1,11 @@
+"use client";
+
 import AIManager from "@/app/_component/AIManager";
 import Callout from "@/app/_component/Callout";
 import RecommendationButton from "@/app/_component/RecommendationButton";
 
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Movelink6() {
   return (
@@ -17,25 +20,34 @@ export default function Movelink6() {
 }
 
 const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
+  const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
+
   const cleaningOptions = [
-    { id: 1, name: "공실입니다", highlighted: true },
+    { id: 1, name: "공실입니다" },
     {
       id: 2,
       name: "모든 집이 있는 상태에서 청소를 해야합니다(거주청소)",
-      highlighted: false,
     },
     {
       id: 3,
       name: "오전에 전 세입자가 나간 후 청소를 하고, 오후에 이사짐이 들어옵니다",
-      highlighted: false,
     },
-    { id: 4, name: "엘리베이터가 없습니다.", highlighted: false },
+    { id: 4, name: "엘리베이터가 없습니다." },
     {
       id: 5,
       name: "가전제품(냉장고, 식기세척기, 오븐 등) 청소가 필요합니다",
-      highlighted: false,
     },
   ];
+
+  const handleOptionClick = (id: number) => {
+    setSelectedOptions((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((optionId) => optionId !== id);
+      } else {
+        return [...prev, id];
+      }
+    });
+  };
 
   return (
     <div className="m-1 flex h-[80vh] w-[calc(100%-100px)] items-center justify-center">
@@ -69,10 +81,11 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
               {cleaningOptions.map((option) => (
                 <button
                   key={option.id}
-                  className={`rounded-lg p-2 text-left ${
-                    option.highlighted
+                  onClick={() => handleOptionClick(option.id)}
+                  className={`rounded-lg p-2 text-left transition-colors ${
+                    selectedOptions.includes(option.id)
                       ? "bg-blue-500 text-white"
-                      : "bg-white text-gray-800"
+                      : "bg-white text-gray-800 hover:bg-blue-100"
                   }`}
                 >
                   {option.name}

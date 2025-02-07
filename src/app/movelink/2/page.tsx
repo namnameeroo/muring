@@ -1,15 +1,17 @@
+"use client";
 import AIManager from "@/app/_component/AIManager";
 import Callout from "@/app/_component/Callout";
-import NextButton from "@/app/_component/NextButton";
+import NavigationButton from "@/app/_component/NavigationButton";
 
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Movelink2() {
   return (
     <div className="flex flex-col bg-blue-50 p-4 shadow-sm">
       <AIManagerInterface>
         <div className="relative -right-20 bottom-1 flex justify-end">
-          <NextButton path="/movelink/3" />
+          <NavigationButton path="/movelink/3" />
         </div>
       </AIManagerInterface>
     </div>
@@ -17,17 +19,37 @@ export default function Movelink2() {
 }
 
 const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
+  const [selectedPropertyType, setSelectedPropertyType] = useState<number>(1);
+  const [selectedBuildingType, setSelectedBuildingType] = useState<number>(1);
+  const [address, setAddress] = useState<string>("");
+  const [detailAddress, setDetailAddress] = useState<string>("");
+  const [postcode, setPostcode] = useState<string>("");
+
   const propertyTypes = [
-    { id: 1, name: "주거", highlighted: false },
-    { id: 2, name: "상업", highlighted: true },
+    { id: 1, name: "주거" },
+    { id: 2, name: "상업" },
   ];
 
   const buildingTypes = [
-    { id: 1, name: "아파트", highlighted: true },
-    { id: 2, name: "빌라", highlighted: false },
-    { id: 3, name: "주택", highlighted: false },
-    { id: 4, name: "오피스텔", highlighted: false },
+    { id: 1, name: "아파트" },
+    { id: 2, name: "빌라" },
+    { id: 3, name: "주택" },
+    { id: 4, name: "오피스텔" },
   ];
+
+  const handleAddressSearch = () => {
+    new window.daum.Postcode({
+      oncomplete: (data: {
+        zonecode: string;
+        address: string;
+        addressType: string;
+        userSelectedType: string;
+      }) => {
+        setPostcode(data.zonecode);
+        setAddress(data.address);
+      },
+    }).open();
+  };
 
   return (
     <div className="m-1 flex h-[80vh] w-[calc(100%-100px)] items-center justify-center">
@@ -61,8 +83,9 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
               {propertyTypes.map((type) => (
                 <button
                   key={type.id}
+                  onClick={() => setSelectedPropertyType(type.id)}
                   className={`rounded-lg p-2 ${
-                    type.highlighted
+                    selectedPropertyType === type.id
                       ? "bg-blue-500 text-white"
                       : "bg-white text-gray-800"
                   }`}
@@ -80,8 +103,9 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
               {buildingTypes.map((type) => (
                 <button
                   key={type.id}
+                  onClick={() => setSelectedBuildingType(type.id)}
                   className={`rounded-lg p-2 ${
-                    type.highlighted
+                    selectedBuildingType === type.id
                       ? "bg-blue-500 text-white"
                       : "bg-white text-gray-800"
                   }`}
@@ -96,17 +120,31 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
           <div className="mt-4">
             <p className="mb-2">해당 공간의 주소를 입력해 주세요.</p>
             <div className="flex gap-2">
-              <button className="rounded-lg bg-white p-2">우편번호</button>
-              <button className="rounded-lg bg-white p-2">주소검색</button>
+              <input
+                className="w-32 rounded-lg border p-2"
+                placeholder="우편번호"
+                value={postcode}
+                readOnly
+              />
+              <button
+                className="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
+                onClick={handleAddressSearch}
+              >
+                주소검색
+              </button>
             </div>
             <div className="mt-2 flex gap-2">
               <input
                 className="w-full rounded-lg border p-2"
                 placeholder="주소"
+                value={address}
+                readOnly
               />
               <input
                 className="w-full rounded-lg border p-2"
                 placeholder="상세주소"
+                value={detailAddress}
+                onChange={(e) => setDetailAddress(e.target.value)}
               />
             </div>
           </div>

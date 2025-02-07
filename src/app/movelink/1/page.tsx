@@ -1,6 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import AIManager from "@/app/_component/AIManager";
 import Callout from "@/app/_component/Callout";
-import NextButton from "@/app/_component/NextButton";
+import NavigationButton from "@/app/_component/NavigationButton";
 
 import Image from "next/image";
 
@@ -9,7 +12,7 @@ export default function Movelink1() {
     <div className="flex flex-col bg-blue-50 p-4 shadow-sm">
       <AIManagerInterface>
         <div className="relative -right-20 bottom-1 flex justify-end">
-          <NextButton path="/movelink/2" />
+          <NavigationButton path="/movelink/2" prev={false} />
         </div>
       </AIManagerInterface>
     </div>
@@ -17,26 +20,26 @@ export default function Movelink1() {
 }
 
 const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
-  // const [selectedServices, setSelectedServices] = useState<number[]>([]);
+  const [selectedServices, setSelectedServices] = useState<number[]>([]);
 
   const services = [
-    { id: 1, name: "토탈인테리어", highlighted: true },
+    { id: 1, name: "토탈인테리어", highlighted: false },
     { id: 2, name: "주방설비", highlighted: false },
     { id: 3, name: "부분설비", highlighted: false },
     { id: 4, name: "주거 / 상업 보험", highlighted: false },
     { id: 5, name: "이사", highlighted: false },
     { id: 6, name: "대출상담사", highlighted: false },
-    { id: 7, name: "청소", highlighted: true },
+    { id: 7, name: "청소", highlighted: false },
     { id: 8, name: "공인중개사", highlighted: false },
   ];
 
-  // const toggleService = (serviceId: number) => {
-  //   setSelectedServices((prev) =>
-  //     prev.includes(serviceId)
-  //       ? prev.filter((id) => id !== serviceId)
-  //       : [...prev, serviceId],
-  //   );
-  // };
+  const toggleService = (serviceId: number) => {
+    setSelectedServices((prev) =>
+      prev.includes(serviceId)
+        ? prev.filter((id) => id !== serviceId)
+        : [...prev, serviceId],
+    );
+  };
 
   return (
     <div className="m-1 flex h-[80vh] w-[calc(100%-100px)] items-center justify-center">
@@ -82,14 +85,11 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
               <button
                 key={service.id}
                 className={`rounded-lg p-2 text-sm ${
-                  // selectedServices.includes(service.id)
-                  //   ? "bg-blue-500 text-white"
-                  //   : "bg-white text-gray-800"
-                  service.highlighted
+                  selectedServices.includes(service.id) || service.highlighted
                     ? "bg-blue-500 text-white"
                     : "bg-white text-gray-800"
                 }`}
-                // onClick={() => toggleService(service.id)}
+                onClick={() => toggleService(service.id)}
               >
                 {service.name}
               </button>
