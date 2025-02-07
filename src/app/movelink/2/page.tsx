@@ -19,8 +19,12 @@ export default function Movelink2() {
 }
 
 const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
-  const [selectedPropertyType, setSelectedPropertyType] = useState<number>(1);
-  const [selectedBuildingType, setSelectedBuildingType] = useState<number>(1);
+  const [selectedPropertyType, setSelectedPropertyType] = useState<
+    number | null
+  >(null);
+  const [selectedBuildingType, setSelectedBuildingType] = useState<
+    number | null
+  >(null);
   const [address, setAddress] = useState<string>("");
   const [detailAddress, setDetailAddress] = useState<string>("");
   const [postcode, setPostcode] = useState<string>("");

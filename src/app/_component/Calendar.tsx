@@ -62,7 +62,7 @@ export default function Calendar() {
           { date: "13", event: "화이트홀스 인테리어\n시공시작" },
           { date: "14" },
           { date: "15" },
-          { date: "16", event: "정성성소\n상담예약" },
+          { date: "16", event: "총각클린\n상담예약" },
           { date: "17" },
           { date: "18" },
           { date: "19" },

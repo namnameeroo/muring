@@ -15,7 +15,7 @@ const experts = [
     id: 1,
     name: "화이트홈즈 인테리어",
     floors: "213층",
-    contracts: 68,
+    contracts: 135,
     description:
       "[전문건설업 면허 보유] 화이트홈즈는 1현장 1소장 1디자이너 원칙을 고수합니다.",
     image: "/images/mock/h1.jpg",
@@ -24,52 +24,52 @@ const experts = [
   {
     id: 2,
     name: "리센느 인테리어",
-    floors: "213층",
-    contracts: 97,
+    floors: "85층",
+    contracts: 34,
     description:
       "[전문건설업 면허 보유] 디자인 설계부터 시공, 마감까지 리센느가 책임지겠습니다.",
     image: "/images/mock/h2.jpg",
-    completedProjects: "계약건 : 135건",
+    completedProjects: "계약건 : 34건",
   },
   {
     id: 3,
     name: "크루엘디자인이앤씨",
-    floors: "213층",
-    contracts: 121,
+    floors: "199층",
+    contracts: 101,
     description:
       "[전문건설업 면허 보유] 35년 직영시공 품질, 가격 합리성으로 감각 라이프스타일링 전문",
     image: "/images/mock/h3.jpg",
-    completedProjects: "계약건 : 135건",
+    completedProjects: "계약건 : 101건",
   },
   {
     id: 4,
     name: "정성청소",
-    floors: "213층",
-    contracts: 178,
+    floors: "387층",
+    contracts: 174,
     description:
-      "[위생관리사 면허 보유] 하청업체 직영으로만 운영하며 대표인 제가 직접 상담합니다.",
+      "[위생관리사 면허 보유] 하청업체 없이, 직영으로만 운영하며 대표인 제가 직접 상담합니다.",
     image: "/images/mock/c1.jpg",
-    completedProjects: "계약건 : 135건",
+    completedProjects: "계약건 : 174건",
   },
   {
     id: 5,
     name: "총각클린",
-    floors: "213층",
-    contracts: 97,
+    floors: "75층",
+    contracts: 53,
     description:
       "[위생관리사 면허 보유] 10년 경력! 집단화된 전문업체입니다. 3명의 아이아빠가 정소합니다.",
     image: "/images/mock/c2.jpg",
-    completedProjects: "계약건 : 135건",
+    completedProjects: "계약건 : 53건",
   },
   {
     id: 6,
     name: "휴앤케어",
-    floors: "213층",
-    contracts: 131,
+    floors: "645층",
+    contracts: 301,
     description:
       "[방역소독업 신고증 보유] 방문후 깨끗한 제품 청소NO! 하루3집만! 제품에 맞는 분해로 청소진행!",
     image: "/images/mock/c3.jpg",
-    completedProjects: "계약건 : 135건",
+    completedProjects: "계약건 : 301건",
   },
 ];
 

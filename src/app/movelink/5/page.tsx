@@ -20,8 +20,8 @@ export default function Movelink5() {
 }
 
 const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
-  const [selectedDate, setSelectedDate] = useState<number | null>(2);
-  const [selectedTime, setSelectedTime] = useState<number | null>(3);
+  const [selectedDate, setSelectedDate] = useState<number | null>(null);
+  const [selectedTime, setSelectedTime] = useState<number | null>(null);
   const [spaces, setSpaces] = useState([
     { id: 1, name: "방", count: 3, highlighted: true },
     { id: 2, name: "화장실", count: 1, highlighted: true },
@@ -51,7 +51,7 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
   const timeOptions = [
     { id: 1, name: "오전 (07시~12시)", highlighted: false },
     { id: 2, name: "오후 (13시~18시)", highlighted: false },
-    { id: 3, name: "모두가능 (07시~18시)", highlighted: true },
+    { id: 3, name: "모두가능 (07시~18시)", highlighted: false },
   ];
 
   return (
@@ -82,23 +82,21 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
           {/* Date Selection */}
           <div className="mt-4">
             <p className="mb-2">청소 예정일이 언제인가요?</p>
-            <div className="flex gap-2">
-              <div className="grid grid-cols-2 grid-rows-2 gap-2">
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => {
-                      setSelectedDate(1);
-                    }}
-                    className={`rounded-lg p-2 transition-colors ${
-                      selectedDate === 1
-                        ? "bg-blue-500 text-white"
-                        : "bg-white text-gray-800 hover:bg-blue-100"
-                    }`}
-                  >
-                    날짜 선택하기
-                  </button>
-                  {selectedDate === 1 && <BasicDatePicker />}
-                </div>
+            <div className="flex flex-col gap-2">
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    setSelectedDate(1);
+                  }}
+                  className={`rounded-lg p-2 transition-colors ${
+                    selectedDate === 1
+                      ? "bg-blue-500 text-white"
+                      : "bg-white text-gray-800 hover:bg-blue-100"
+                  }`}
+                >
+                  날짜 선택하기
+                </button>
+
                 <button
                   onClick={() => {
                     setSelectedDate(2);
@@ -112,6 +110,7 @@ const AIManagerInterface = ({ children }: { children?: React.ReactNode }) => {
                   협의가능 (선택)
                 </button>
               </div>
+              {selectedDate === 1 && <BasicDatePicker />}
 
               {/* {showCalendar && selectedDate === 1 && (
                 <div className="w-full rounded-lg p-4 shadow-lg">
