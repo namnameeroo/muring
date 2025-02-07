@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import Modal from "./Modal";
 
 export default function ReservationModal({
@@ -7,6 +8,7 @@ export default function ReservationModal({
   open?: boolean;
   onClose: () => void;
 }) {
+  const router = useRouter();
   const timeSlots = [
     { id: 1, label: "오전 (09시~12시)" },
     { id: 2, label: "오후 (13시~18시)" },
@@ -67,7 +69,10 @@ export default function ReservationModal({
           ))}
         </div>
 
-        <button className="w-full rounded-lg bg-blue-500 py-3 text-white hover:bg-blue-600">
+        <button
+          className="w-full rounded-lg bg-blue-500 py-3 text-white hover:bg-blue-600"
+          onClick={() => router.push("/movelink/calendar")}
+        >
           상담확정
         </button>
       </div>
